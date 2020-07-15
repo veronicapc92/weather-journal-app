@@ -2,7 +2,7 @@
 
 ## About the project
 
-This is the second project of the **Front-End Developer Nanodegree program by Udacity**. The starter code (CSS & HTML) has been provided by Udacity.
+This is the third project of the **Front-End Developer Nanodegree program by Udacity**. The starter code (CSS & HTML) has been provided by Udacity.
 
 ## Project requirements
 
