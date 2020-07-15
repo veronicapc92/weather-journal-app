@@ -8,15 +8,17 @@ button.addEventListener("click", (e) => handleClick(e));
 /* Function called by event listener */
 function handleClick(e) {
   e.preventDefault();
+  const zipCode = document.getElementById("zip").value;
   const url = "http://localhost:8000/all";
-  getApiData().then((data) => postData(url, data).then(updateUI(url)));
+  if (!zipCode) alert("Please enter a ZIP code");
+  else
+    getApiData(zipCode).then((data) => postData(url, data).then(updateUI(url)));
 }
 
 /* Function to GET Web API Data*/
-async function getApiData() {
-  const zipCode = document.getElementById("zip").value;
+async function getApiData(zipCode) {
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}`
+    `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}&units=imperial`
   );
 
   try {
@@ -54,7 +56,7 @@ async function updateUI(url) {
   try {
     const data = await response.json();
     document.getElementById("date").innerHTML = data.date;
-    document.getElementById("temp").innerHTML = data.temp;
+    document.getElementById("temp").innerHTML = `${data.temp} °F`;
     document.getElementById("content").innerHTML = data.feelings;
   } catch (error) {
     console.log("error", error);
