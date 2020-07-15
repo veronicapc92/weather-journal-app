@@ -9,9 +9,7 @@ button.addEventListener("click", (e) => handleClick(e));
 function handleClick(e) {
   e.preventDefault();
   const url = "http://localhost:8000/all";
-  getApiData()
-    .then((data) => postData(url, data))
-    .then(updateUI(url));
+  getApiData().then((data) => postData(url, data).then(updateUI(url)));
 }
 
 /* Function to GET Web API Data*/
